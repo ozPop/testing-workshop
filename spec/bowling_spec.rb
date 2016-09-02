@@ -45,4 +45,11 @@ describe "Bowling basics" do
     end
   end
 
+  describe '#game scan strikes' do
+    it 'rolls 12 strikes' do
+      bowling = Bowling.new
+      12.times { bowling.roll(10)}
+      expect(bowling.score).to eq(300)
+    end
+  end
 end
