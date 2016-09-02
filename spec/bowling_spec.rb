@@ -15,4 +15,12 @@ describe "Bowling basics" do
       expect(bowling.score).to eq(0)
     end
   end
+
+  describe '#game with no strike no spare' do
+    it 'returns 20 when all turns are 1' do
+      bowling = Bowling.new
+      20.times { bowling.roll(1)}
+      expect(bowling.score).to eq(20)
+    end
+  end
 end
