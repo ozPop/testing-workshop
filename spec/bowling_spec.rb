@@ -34,7 +34,7 @@ describe "Bowling basics" do
     end
   end
 
-  describe '#game scan a strikes' do
+  describe '#game can roll strikes' do
     it 'rolls 1 strike, then a 3, and 4, rest all gutter' do
       bowling = Bowling.new
       1.times { bowling.roll(10)}
@@ -42,6 +42,14 @@ describe "Bowling basics" do
       1.times { bowling.roll(4)}
       17.times { bowling.roll(0)}
       expect(bowling.score).to eq(24)
+    end
+  end
+
+  describe '#game can roll perfect' do
+    it 'rolls 12 strikes, score is 300' do
+      bowling = Bowling.new
+      12.times { bowling.roll(10)}
+      expect(bowling.score).to eq(300)
     end
   end
 
