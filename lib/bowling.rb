@@ -1,38 +1,34 @@
 class Bowling
-  attr_accessor :frame, :strike
-  attr_reader :score
+  attr_accessor :frame, :score, :count
   def initialize
     @score = 0
-    @frame = []
-    @strike = 'off'
+    @frame = [0,0,0]
+    @game = []
+    @count = 0
+  end
+
+  def roll_strike(pin_count)
+    self.score += (@frame[-1]*2 + @frame[-2])
+    self.frame << pin_count 
+  end
+
+  def spare(pin_count)
+    self.score += pin_count*2
+    self.frame << pin_count
   end
 
   def roll(pin_count)
-    if strike == 'on'
-        self.frame << pin_count 
-      if @frame.size == 2 
-        self.score = @frame.reduce(:+)
-        self.frame.clear
-        self.strike = 'off'
-      end
+    @count += 1
+    if @frame[-2] == 10
+      self.frame << pin_count 
+      (self.score += pin_count and return ) if self.frame.count(10) == 11
+      roll_strike(pin_count)
+    elsif @frame[-1] + @frame[-2] == 10 && @count.odd?
+      spare(pin_count)
     else
-      if @frame[0] == 10
-        self.strike = 'on'
-      elsif @frame.size < 2
-        self.frame << pin_count 
-        self.score = pin_count
-      elsif @frame.reduce(:+) == 10
-        self.score = pin_count*2
-        self.frame.clear
-        self.frame << pin_count
-      else
-        self.score = pin_count
-      end
+      self.frame << pin_count 
+      self.score += pin_count
     end
+    # end
   end
-
-  def score=(score)
-    @score += score
-  end
-
 end
