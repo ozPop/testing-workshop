@@ -23,4 +23,15 @@ describe "Bowling basics" do
       expect(bowling.score).to eq(20)
     end
   end
+
+  describe '#game can roll spares' do
+    it 'rolls two 5s, then 3, rest all gutter' do
+      bowling = Bowling.new
+      2.times { bowling.roll(5)}
+      1.times { bowling.roll(3)}
+      17.times { bowling.roll(0)}
+      expect(bowling.score).to eq(16)
+    end
+  end
+
 end
