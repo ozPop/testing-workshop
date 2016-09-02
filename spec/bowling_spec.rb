@@ -7,13 +7,12 @@ describe "Bowling basics" do
       expect(game).to be_a(Bowling)
     end
   end
+
+  describe '#gutter game' do
+    it 'returns 0 when all turns are 0' do
+      bowling = Bowling.new
+      20.times { bowling.roll(0)}
+      expect(bowling.score).to eq(0)
+    end
+  end
 end
-
-
-
-# describe "Song Basics" do
-#     it 'accepts a name for the song' do
-#       song = Song.new("In an Aeroplane Over the Sea")
-#       expect(song.name).to eq("In an Aeroplane Over the Sea")
-#     end
-#   end
