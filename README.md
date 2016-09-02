@@ -1,14 +1,3 @@
-Test workshop
+### Writing Rspec Tests Workshop
 
-class Game
-  
-  def roll(num_pins)
-    # 
-  end
-  
-  def score
-    # called once at the end
-    return game_score
-  end
-  
-end
+[Workshop details](https://github.com/ruchiramani/testing-wdf-000)
